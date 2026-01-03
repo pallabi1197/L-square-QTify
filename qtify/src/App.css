@@ -1,4 +1,11 @@
 :root {
   --color-black: #121212;
-  --color-green: #34c94b;
+  --color-primary: #34c94b;
+  --color-white: #FFFFFF;
+
+}
+
+body {
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
 }
