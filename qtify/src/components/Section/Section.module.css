@@ -1,0 +1,21 @@
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: var(--color-white);
+}
+
+.button{font-family: "Poppins", sans-serif;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 20px;
+line-height: 100%;
+letter-spacing: 0px;
+text-align: right;
+color: var(--color-primary);
+background-color: var(--color-black);
+border: none;
+}

@@ -2,10 +2,11 @@
   --color-black: #121212;
   --color-primary: #34c94b;
   --color-white: #FFFFFF;
-
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: "Poppins", sans-serif;
+  background-color: #121212;
 }
+

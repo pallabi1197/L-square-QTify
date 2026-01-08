@@ -1,0 +1,51 @@
+.card {
+  width: 159px;
+  height: 232px;
+  background-color: var(--color-black);
+}
+
+.cardactionarea {
+  width: 159px;
+  height: 205px;
+  border-radius: 10px;
+  background-color: var(--color-white);
+}
+
+.cardcontent {
+  padding: 6px;
+}
+
+.image {
+  width: 159px;
+  height: 170px;
+  opacity: 1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.chip {
+  width: 78px;
+  height: 23px;
+  opacity: 1;
+  top: 146px;
+  left: 6px;
+  gap: 1px;
+  border-radius: 10px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: var(--color-white);
+}
