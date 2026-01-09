@@ -9,7 +9,7 @@ import axios from "axios";
 import CardComponent from "../Card/Card";
 import styles from "./Section.module.css";
 
-export default function Section() {
+export default function Section({title1, title2}) {
   const [cardData, setCardData] = useState([]);
 
   const getCardData = async () => {
@@ -41,8 +41,8 @@ export default function Section() {
           gap: 2,
         }}
       >
-        <p className={styles.title}>Top Albums</p>
-        <button className={styles.button}>Collapse</button>
+        <p className={styles.title}>{title1}</p>
+        <button className={styles.button}>{title2}</button>
       </Box>
       <Grid container spacing={3} sx={{ mt: 2 }}>
         {cardData.length &&
