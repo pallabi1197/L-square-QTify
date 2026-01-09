@@ -9,18 +9,23 @@ import axios from "axios";
 import CardComponent from "../Card/Card";
 import styles from "./Section.module.css";
 
-export default function Section({title1, title2}) {
-  const [cardData, setCardData] = useState([]);
+export default function Section() {
+  const [topAlbums, setTopAlbums] = useState([]);
+  const [newAlbums, setNewAlbums] = useState([]);
 
   const getCardData = async () => {
     try {
-      const response = await axios.get(
+      const response1 = await axios.get(
         "https://qtify-backend.labs.crio.do/albums/top"
       );
 
-      if (response.status === 200) {
-        console.log(response.data);
-        setCardData(response.data);
+      const response2 = await axios.get(
+        "https://qtify-backend.labs.crio.do/albums/new"
+      );
+
+      if (response1.status && response2.status === 200) {
+        setTopAlbums(response1.data);
+        setNewAlbums(response2.data);
       }
     } catch (error) {
       console.log("error fetching card data", error);
@@ -32,26 +37,49 @@ export default function Section({title1, title2}) {
   }, []);
 
   return (
-    <Box sx={{ maxWidth: "96%", mx: "auto" }}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 2,
-        }}
-      >
-        <p className={styles.title}>{title1}</p>
-        <button className={styles.button}>{title2}</button>
+    <>
+      <Box sx={{ maxWidth: "96%", mx: "auto" , mt:6 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          <p className={styles.title}>Top Albums</p>
+          <button className={styles.button}>Collapse</button>
+        </Box>
+        <Grid container spacing={3} sx={{ mt: 2 }}>
+          {topAlbums.length &&
+            topAlbums.map((card) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={card.id}>
+                <CardComponent card={card} />
+              </Grid>
+            ))}
+        </Grid>
       </Box>
-      <Grid container spacing={3} sx={{ mt: 2 }}>
-        {cardData.length &&
-          cardData.map((card) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={card.id}>
-              <CardComponent card={card} />
-            </Grid>
-          ))}
-      </Grid>
-    </Box>
+      <Box sx={{ maxWidth: "96%", mx: "auto", mt:6 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          <p className={styles.title}>New Albums</p>
+          <button className={styles.button}>Show All</button>
+        </Box>
+        <Grid container spacing={3} sx={{ mt: 2 }}>
+          {newAlbums.length &&
+            newAlbums.map((card) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={card.id}>
+                <CardComponent card={card} />
+              </Grid>
+            ))}
+        </Grid>
+      </Box>
+    </>
   );
 }

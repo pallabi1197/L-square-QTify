@@ -9,8 +9,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Hero />
-      <Section title1="Top Albums" title2="Collapse"/>
-      <Section title1="New Albums" title2="Show All"/>
+      <Section />
     </div>
   );
 }
