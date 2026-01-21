@@ -1,7 +1,3 @@
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { useEffect, useState } from "react";
@@ -18,7 +14,6 @@ export default function Section() {
   const [newAlbums, setNewAlbums] = useState([]);
   const [text, setText] = useState("Collapse");
   const [text2, setText2] = useState("Collapse");
-  const [swiper, setSwiper] = useState(null);
 
   const getCardData = async () => {
     try {
