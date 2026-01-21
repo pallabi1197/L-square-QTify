@@ -19,3 +19,7 @@ color: var(--color-primary);
 background-color: var(--color-black);
 border: none;
 }
+
+.albumwrapper {
+  position: relative;
+}

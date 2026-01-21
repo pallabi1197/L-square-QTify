@@ -1,0 +1,17 @@
+.customPrev,
+.customNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.customPrev {
+  left: 0;
+  z-index: 999;
+}
+
+.customNext {
+  right: 0;
+  z-index: 999;
+}

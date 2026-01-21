@@ -8,10 +8,17 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CardComponent from "../Card/Card";
 import styles from "./Section.module.css";
+import Carousel from "../Carousel/Carousel";
+import { SwiperSlide } from "swiper/react";
+import LeftArrow from "../Carousel/LeftArrow";
+import RightArrow from "../Carousel/RightArrow";
 
 export default function Section() {
   const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
+  const [text, setText] = useState("Collapse");
+  const [text2, setText2] = useState("Collapse");
+  const [swiper, setSwiper] = useState(null);
 
   const getCardData = async () => {
     try {
@@ -38,7 +45,7 @@ export default function Section() {
 
   return (
     <>
-      <Box sx={{ maxWidth: "96%", mx: "auto" , mt:6 }}>
+      <Box sx={{ maxWidth: "96%", mx: "auto", mt: 6 }}>
         <Box
           sx={{
             display: "flex",
@@ -48,18 +55,44 @@ export default function Section() {
           }}
         >
           <p className={styles.title}>Top Albums</p>
-          <button className={styles.button}>Collapse</button>
+
+          <button
+            className={styles.button}
+            onClick={() =>
+              setText(text === "Collapse" ? "Show All" : "Collapse")
+            }
+          >
+            {text}
+          </button>
         </Box>
-        <Grid container spacing={3} sx={{ mt: 2 }}>
-          {topAlbums.length &&
-            topAlbums.map((card) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={card.id}>
-                <CardComponent card={card} />
-              </Grid>
-            ))}
-        </Grid>
+        {text === "Collapse" ? (
+          <Grid container spacing={3} sx={{ justifyContent: "center" }}>
+            {topAlbums.length &&
+              topAlbums
+                .slice(0, 8)
+                .map((card) => <CardComponent card={card} />)}
+          </Grid>
+        ) : (
+          <Grid
+            container
+            spacing={3}
+            sx={{ justifyContent: "center" }}
+            className={styles.albumwrapper}
+          >
+            <Carousel>
+              {topAlbums.length &&
+                topAlbums.map((card) => (
+                  <SwiperSlide>
+                    <CardComponent card={card} />
+                  </SwiperSlide>
+                ))}
+            </Carousel>
+            <LeftArrow />
+            <RightArrow />
+          </Grid>
+        )}
       </Box>
-      <Box sx={{ maxWidth: "96%", mx: "auto", mt:6 }}>
+      <Box sx={{ maxWidth: "96%", mx: "auto", mt: 6 }}>
         <Box
           sx={{
             display: "flex",
@@ -69,16 +102,42 @@ export default function Section() {
           }}
         >
           <p className={styles.title}>New Albums</p>
-          <button className={styles.button}>Show All</button>
+
+          <button
+            className={styles.button}
+            onClick={() =>
+              setText2(text2 === "Collapse" ? "Show All" : "Collapse")
+            }
+          >
+            {text2}
+          </button>
         </Box>
-        <Grid container spacing={3} sx={{ mt: 2 }}>
-          {newAlbums.length &&
-            newAlbums.map((card) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={card.id}>
-                <CardComponent card={card} />
-              </Grid>
-            ))}
-        </Grid>
+        {text2 === "Collapse" ? (
+          <Grid container spacing={3} sx={{ justifyContent: "center" }}>
+            {newAlbums.length &&
+              newAlbums
+                .slice(0, 8)
+                .map((card) => <CardComponent card={card} />)}
+          </Grid>
+        ) : (
+          <Grid
+            container
+            spacing={3}
+            sx={{ justifyContent: "center" }}
+            className={styles.albumwrapper}
+          >
+            <Carousel>
+              {newAlbums.length &&
+                newAlbums.map((card) => (
+                  <SwiperSlide>
+                    <CardComponent card={card} />
+                  </SwiperSlide>
+                ))}
+            </Carousel>
+            <LeftArrow />
+            <RightArrow />
+          </Grid>
+        )}
       </Box>
     </>
   );

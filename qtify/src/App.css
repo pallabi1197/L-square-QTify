@@ -10,3 +10,6 @@ body {
   background-color: #121212;
 }
 
+.swiper-button-disabled {
+  display: none;
+}
