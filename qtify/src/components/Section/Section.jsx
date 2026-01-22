@@ -60,7 +60,7 @@ export default function Section() {
             {text}
           </button>
         </Box>
-        {text === "Show All" ? (
+        {text === "Show all" ? (
           <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
               {topAlbums.length &&
@@ -100,7 +100,7 @@ export default function Section() {
             {text2}
           </button>
         </Box>
-        {text2 === "Show All" ? (
+        {text2 === "Show all" ? (
           <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
               {newAlbums.length &&
