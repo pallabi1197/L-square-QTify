@@ -18,11 +18,11 @@ export default function Section() {
   const getCardData = async () => {
     try {
       const response1 = await axios.get(
-        "https://qtify-backend.labs.crio.do/albums/top"
+        "https://qtify-backend.labs.crio.do/albums/top",
       );
 
       const response2 = await axios.get(
-        "https://qtify-backend.labs.crio.do/albums/new"
+        "https://qtify-backend.labs.crio.do/albums/new",
       );
 
       if (response1.status && response2.status === 200) {
@@ -60,19 +60,8 @@ export default function Section() {
             {text}
           </button>
         </Box>
-        {text === "Collapse" ? (
-          <Grid container spacing={3}>
-            {topAlbums.length &&
-              topAlbums              
-                .map((card) => <CardComponent card={card} />)}
-          </Grid>
-        ) : (
-          <Grid
-            container
-            spacing={3}
-           
-            className={styles.albumwrapper}
-          >
+        {text === "Show All" ? (
+          <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
               {topAlbums.length &&
                 topAlbums.map((card) => (
@@ -83,6 +72,11 @@ export default function Section() {
             </Carousel>
             <LeftArrow />
             <RightArrow />
+          </Grid>
+        ) : (
+          <Grid container spacing={3}>
+            {topAlbums.length &&
+              topAlbums.map((card) => <CardComponent card={card} />)}
           </Grid>
         )}
       </Box>
@@ -106,19 +100,8 @@ export default function Section() {
             {text2}
           </button>
         </Box>
-        {text2 === "Collapse" ? (
-          <Grid container spacing={3}>
-            {newAlbums.length &&
-              newAlbums               
-                .map((card) => <CardComponent card={card} />)}
-          </Grid>
-        ) : (
-          <Grid
-            container
-            spacing={3}
-           
-            className={styles.albumwrapper}
-          >
+        {text2 === "Show All" ? (
+          <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
               {newAlbums.length &&
                 newAlbums.map((card) => (
@@ -129,6 +112,11 @@ export default function Section() {
             </Carousel>
             <LeftArrow />
             <RightArrow />
+          </Grid>
+        ) : (
+          <Grid container spacing={3}>
+            {newAlbums.length &&
+              newAlbums.map((card) => <CardComponent card={card} />)}
           </Grid>
         )}
       </Box>
