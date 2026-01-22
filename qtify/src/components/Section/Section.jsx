@@ -61,17 +61,16 @@ export default function Section() {
           </button>
         </Box>
         {text === "Collapse" ? (
-          <Grid container spacing={3} sx={{ justifyContent: "center" }}>
+          <Grid container spacing={3}>
             {topAlbums.length &&
-              topAlbums
-                .slice(0, 8)
+              topAlbums              
                 .map((card) => <CardComponent card={card} />)}
           </Grid>
         ) : (
           <Grid
             container
             spacing={3}
-            sx={{ justifyContent: "center" }}
+           
             className={styles.albumwrapper}
           >
             <Carousel>
@@ -108,17 +107,16 @@ export default function Section() {
           </button>
         </Box>
         {text2 === "Collapse" ? (
-          <Grid container spacing={3} sx={{ justifyContent: "center" }}>
+          <Grid container spacing={3}>
             {newAlbums.length &&
-              newAlbums
-                .slice(0, 8)
+              newAlbums               
                 .map((card) => <CardComponent card={card} />)}
           </Grid>
         ) : (
           <Grid
             container
             spacing={3}
-            sx={{ justifyContent: "center" }}
+           
             className={styles.albumwrapper}
           >
             <Carousel>
