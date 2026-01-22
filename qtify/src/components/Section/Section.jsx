@@ -54,7 +54,7 @@ export default function Section() {
           <button
             className={styles.button}
             onClick={() =>
-              setText(text === "Collapse" ? "Show All" : "Collapse")
+              setText(text === "Collapse" ? "Show all" : "Collapse")
             }
           >
             {text}
@@ -94,7 +94,7 @@ export default function Section() {
           <button
             className={styles.button}
             onClick={() =>
-              setText2(text2 === "Collapse" ? "Show All" : "Collapse")
+              setText2(text2 === "Collapse" ? "Show all" : "Collapse")
             }
           >
             {text2}
