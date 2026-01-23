@@ -64,7 +64,7 @@ export default function Section() {
               {topAlbums.length &&
                 topAlbums.map((card) => (
                   <SwiperSlide>
-                    <CardComponent card={card} />
+                    <CardComponent key={card.id} card={card} />
                   </SwiperSlide>
                 ))}
             </Carousel>
@@ -74,7 +74,9 @@ export default function Section() {
         ) : (
           <Grid container spacing={3}>
             {topAlbums.length &&
-              topAlbums.map((card) => <CardComponent card={card} />)}
+              topAlbums.map((card) => (
+                <CardComponent key={card.id} card={card} />
+              ))}
           </Grid>
         )}
       </Box>
@@ -102,7 +104,7 @@ export default function Section() {
               {newAlbums.length &&
                 newAlbums.map((card) => (
                   <SwiperSlide>
-                    <CardComponent card={card} />
+                    <CardComponent key={card.id} card={card} />
                   </SwiperSlide>
                 ))}
             </Carousel>
@@ -112,7 +114,9 @@ export default function Section() {
         ) : (
           <Grid container spacing={3}>
             {newAlbums.length &&
-              newAlbums.map((card) => <CardComponent card={card} />)}
+              newAlbums.map((card) => (
+                <CardComponent key={card.id} card={card} />
+              ))}
           </Grid>
         )}
       </Box>
