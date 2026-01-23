@@ -12,7 +12,8 @@ import RightArrow from "../Carousel/RightArrow";
 export default function Section() {
   const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
-  const [text, setText] = useState("Collapse");
+  const [showTopCarousel, setShowTopCarousel] = useState(false);
+  const [showNewCarousel, setShowNewCarousel] = useState(false);
   const [text2, setText2] = useState("Collapse");
 
   const getCardData = async () => {
@@ -52,15 +53,13 @@ export default function Section() {
           <p className={styles.title}>Top Albums</p>
 
           <button
+            onClick={() => setShowTopCarousel(!showTopCarousel)}
             className={styles.button}
-            onClick={() =>
-              setText(text === "Collapse" ? "Show All" : "Collapse")
-            }
           >
-            {text}
+            {showTopCarousel ? "Show All" : "Collapse"}
           </button>
         </Box>
-        {text === "Show All" ? (
+        {showTopCarousel ? (
           <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
               {topAlbums.length &&
@@ -92,15 +91,13 @@ export default function Section() {
           <p className={styles.title}>New Albums</p>
 
           <button
+            onClick={() => setShowNewCarousel(!showNewCarousel)}
             className={styles.button}
-            onClick={() =>
-              setText2(text2 === "Collapse" ? "Show All" : "Collapse")
-            }
           >
-            {text2}
+            {showNewCarousel ? "Show All" : "Collapse"}
           </button>
         </Box>
-        {text2 === "Show All" ? (
+        {showNewCarousel ? (
           <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
               {newAlbums.length &&
