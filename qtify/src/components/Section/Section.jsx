@@ -54,13 +54,13 @@ export default function Section() {
           <button
             className={styles.button}
             onClick={() =>
-              setText(text === "Collapse" ? "Show all" : "Collapse")
+              setText(text === "Collapse" ? "Show All" : "Collapse")
             }
           >
             {text}
           </button>
         </Box>
-        {text === "Show all" ? (
+        {text === "Show All" ? (
           <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
               {topAlbums.length &&
@@ -94,13 +94,13 @@ export default function Section() {
           <button
             className={styles.button}
             onClick={() =>
-              setText2(text2 === "Collapse" ? "Show all" : "Collapse")
+              setText2(text2 === "Collapse" ? "Show All" : "Collapse")
             }
           >
             {text2}
           </button>
         </Box>
-        {text2 === "Show all" ? (
+        {text2 === "Show All" ? (
           <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
               {newAlbums.length &&
