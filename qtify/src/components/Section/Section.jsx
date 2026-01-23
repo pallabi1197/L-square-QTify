@@ -14,7 +14,6 @@ export default function Section() {
   const [newAlbums, setNewAlbums] = useState([]);
   const [showTopCarousel, setShowTopCarousel] = useState(false);
   const [showNewCarousel, setShowNewCarousel] = useState(false);
-  const [text2, setText2] = useState("Collapse");
 
   const getCardData = async () => {
     try {
