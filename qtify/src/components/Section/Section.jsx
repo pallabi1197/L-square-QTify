@@ -12,8 +12,8 @@ import RightArrow from "../Carousel/RightArrow";
 export default function Section() {
   const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
-  const [showTopCarousel, setShowTopCarousel] = useState(false);
-  const [showNewCarousel, setShowNewCarousel] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsedNew, setIsCollapsedNew] = useState(false);
 
   const getCardData = async () => {
     try {
@@ -34,6 +34,14 @@ export default function Section() {
     }
   };
 
+  const handleToggle = () => {
+    setIsCollapsed((prev) => !prev);
+  };
+
+  const handleToggleNew = () => {
+    setIsCollapsedNew((prev) => !prev);
+  };
+
   useEffect(() => {
     getCardData();
   }, []);
@@ -51,14 +59,11 @@ export default function Section() {
         >
           <p className={styles.title}>Top Albums</p>
 
-          <button
-            onClick={() => setShowTopCarousel(!showTopCarousel)}
-            className={styles.button}
-          >
-            {showTopCarousel ? "Show All" : "Collapse"}
+          <button onClick={handleToggle} className={styles.button}>
+            {isCollapsed ? "Show All" : "Collapse"}
           </button>
         </Box>
-        {showTopCarousel ? (
+        {isCollapsed ? (
           <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
               {topAlbums.length &&
@@ -91,14 +96,11 @@ export default function Section() {
         >
           <p className={styles.title}>New Albums</p>
 
-          <button
-            onClick={() => setShowNewCarousel(!showNewCarousel)}
-            className={styles.button}
-          >
-            {showNewCarousel ? "Show All" : "Collapse"}
+          <button onClick={handleToggleNew} className={styles.button}>
+            {isCollapsedNew ? "Show All" : "Collapse"}
           </button>
         </Box>
-        {showNewCarousel ? (
+        {isCollapsedNew ? (
           <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
               {newAlbums.length &&
