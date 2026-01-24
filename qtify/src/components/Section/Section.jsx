@@ -91,7 +91,10 @@ export default function Section() {
         >
           <p className={styles.title}>New Albums</p>
 
-          <button onClick={() => setIsCollapsedNew((prev) => !prev)}>
+          <button
+            onClick={() => setIsCollapsedNew((prev) => !prev)}
+            className={styles.button}
+          >
             {isCollapsedNew ? "Show all" : "Collapse"}
           </button>
         </Box>
