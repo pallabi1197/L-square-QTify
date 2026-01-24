@@ -34,14 +34,6 @@ export default function Section() {
     }
   };
 
-  const handleToggle = () => {
-    setIsCollapsed((prev) => !prev);
-  };
-
-  const handleToggleNew = () => {
-    setIsCollapsedNew((prev) => !prev);
-  };
-
   useEffect(() => {
     getCardData();
   }, []);
@@ -59,8 +51,11 @@ export default function Section() {
         >
           <p className={styles.title}>Top Albums</p>
 
-          <button onClick={handleToggle} className={styles.button}>
-            {isCollapsed ? "Show All" : "Collapse"}
+          <button
+            onClick={() => setIsCollapsed((prev) => !prev)}
+            className={styles.button}
+          >
+            {isCollapsed ? "Show all" : "Collapse"}
           </button>
         </Box>
         {isCollapsed ? (
@@ -96,8 +91,8 @@ export default function Section() {
         >
           <p className={styles.title}>New Albums</p>
 
-          <button onClick={handleToggleNew} className={styles.button}>
-            {isCollapsedNew ? "Show All" : "Collapse"}
+          <button onClick={() => setIsCollapsedNew((prev) => !prev)}>
+            {isCollapsedNew ? "Show all" : "Collapse"}
           </button>
         </Box>
         {isCollapsedNew ? (
