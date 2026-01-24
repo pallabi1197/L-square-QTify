@@ -55,7 +55,7 @@ export default function Section() {
             onClick={() => setIsCollapsed((prev) => !prev)}
             className={styles.button}
           >
-            {isCollapsed ? "Show all" : "Collapse"}
+            {isCollapsed ? "Show All" : "Collapse"}
           </button>
         </Box>
         {isCollapsed ? (
@@ -91,11 +91,8 @@ export default function Section() {
         >
           <p className={styles.title}>New Albums</p>
 
-          <button
-            onClick={() => setIsCollapsedNew((prev) => !prev)}
-            className={styles.button}
-          >
-            {isCollapsedNew ? "Show all" : "Collapse"}
+          <button onClick={() => setIsCollapsedNew((prev) => !prev)} className={styles.button}>
+            {isCollapsedNew ? "Show All" : "Collapse"}
           </button>
         </Box>
         {isCollapsedNew ? (
