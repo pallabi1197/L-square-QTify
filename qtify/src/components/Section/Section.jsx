@@ -67,9 +67,9 @@ export default function Section() {
                     <CardComponent key={card.id} card={card} />
                   </SwiperSlide>
                 ))}
+              <LeftArrow />
+              <RightArrow />
             </Carousel>
-            <LeftArrow />
-            <RightArrow />
           </Grid>
         ) : (
           <Grid container spacing={3}>
@@ -107,9 +107,9 @@ export default function Section() {
                     <CardComponent key={card.id} card={card} />
                   </SwiperSlide>
                 ))}
+              <LeftArrow />
+              <RightArrow />
             </Carousel>
-            <LeftArrow />
-            <RightArrow />
           </Grid>
         ) : (
           <Grid container spacing={3}>
