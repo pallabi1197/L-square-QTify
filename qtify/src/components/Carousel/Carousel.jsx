@@ -29,7 +29,7 @@ const Carousel = ({
       autoplay={autoplay}
       breakpoints={{
         0: { slidesPerView: 2 },
-        640: { slidesPerView: 2 },
+        640: { slidesPerView: 5 },
         1024: { slidesPerView },
       }}
     >
