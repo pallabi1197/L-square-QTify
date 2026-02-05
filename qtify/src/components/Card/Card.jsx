@@ -5,7 +5,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import Chip from "@mui/material/Chip";
 import styles from "./Card.module.css";
 
-export default function CardComponent({ card }) {
+export default function CardComponent({ card, label }) {
   return (
     <>
       <Card className={styles.card}>
@@ -17,7 +17,7 @@ export default function CardComponent({ card }) {
             
           />
           <CardContent className={styles.cardcontent}>
-            <Chip className={styles.chip} label="100 Follows" />
+            <Chip className={styles.chip} label={label} />
           </CardContent>
         </CardActionArea>
         <p className={styles.title}>{card.title}</p>
