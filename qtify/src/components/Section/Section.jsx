@@ -67,7 +67,7 @@ export default function Section() {
 
   return (
     <>
-      <Box sx={{ maxWidth: "96%", mx: "auto", mt: 6 }}>
+      <Box className={styles.container}>
         <Box
           sx={{
             display: "flex",
@@ -111,7 +111,7 @@ export default function Section() {
           </Grid>
         )}
       </Box>
-      <Box sx={{ maxWidth: "96%", mx: "auto", mt: 6 }}>
+      <Box className={styles.container1}>
         <Box
           sx={{
             display: "flex",
@@ -155,7 +155,7 @@ export default function Section() {
           </Grid>
         )}
       </Box>
-      <Box sx={{ maxWidth: "96%", mx: "auto", mt: 6 }}>
+      <Box className={styles.container1}>
         <Box
           sx={{
             display: "flex",
@@ -205,6 +205,8 @@ export default function Section() {
           </Carousel>
         </Grid>
       </Box>
+
+    
     </>
   );
 }

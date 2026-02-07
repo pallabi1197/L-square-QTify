@@ -32,3 +32,24 @@ border: none;
 .tab.Mui-selected {
   color: #fff;
 }
+
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+  padding-bottom: 30px;
+}
+
+.container1 {
+  max-width: 100%;
+  margin: 0 auto;    
+  border-style: solid none;
+  border-width: 1px 0;
+  border-color: #34c94b;
+  padding:0 30px;
+  padding-bottom: 30px;
+
+}
+
+

@@ -1,0 +1,9 @@
+.container {
+  max-width: 100%;
+  margin: 0 auto;    
+  border-style: solid none;
+  border-width: 1px 0;
+  border-color: #fff;
+  padding:30px
+
+}
