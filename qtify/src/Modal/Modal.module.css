@@ -25,3 +25,7 @@
 
 .css-10d30g3-MuiPaper-root-MuiDialog-paper{width: 35%!important;
 border-radius: 10px;}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-si425x {
+    width: 35%;
+}
