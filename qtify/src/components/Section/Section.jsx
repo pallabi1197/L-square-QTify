@@ -21,24 +21,22 @@ export default function Section() {
   const [selectedGenre, setSelectedGenre] = useState("all");
 
   const getCardData = async () => {
-  try {
-    const [topRes, newRes, songRes] = await Promise.all([
-      axios.get("https://qtify-backend.labs.crio.do/albums/top"),
-      axios.get("https://qtify-backend.labs.crio.do/albums/new"),
-      axios.get("https://qtify-backend.labs.crio.do/songs"),
-    ]);
+    try {
+      const [topRes, newRes, songRes, genreRes] = await Promise.all([
+        axios.get("https://qtify-backend.labs.crio.do/albums/top"),
+        axios.get("https://qtify-backend.labs.crio.do/albums/new"),
+        axios.get("https://qtify-backend.labs.crio.do/songs"),
+        axios.get("https://qtify-backend.labs.crio.do/genres"),
+      ]);
 
-    setTopAlbums(topRes.data);
-    setNewAlbums(newRes.data);
-    setShowSongs(songRes.data);
-
-  } catch (error) {
-    console.log("error fetching card data", error);
-  }
-};
-
-
-  console.log("song genre:", showSongs[0]?.genre?.key);
+      setTopAlbums(topRes.data);
+      setNewAlbums(newRes.data);
+      setShowSongs(songRes.data);
+      setShowGenres(genreRes.data.data);
+    } catch (error) {
+      console.log("error fetching card data", error);
+    }
+  };
 
   const filteredSongs =
     selectedGenre === "all"
@@ -51,6 +49,7 @@ export default function Section() {
 
   return (
     <>
+      {/* Top Albums */}
       <Box className={styles.container}>
         <Box
           sx={{
@@ -69,32 +68,29 @@ export default function Section() {
             {!isCollapsed ? "Show All" : "Collapse"}
           </button>
         </Box>
+
         {!isCollapsed ? (
           <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
-              {topAlbums.length &&
-                topAlbums.map((card) => (
-                  <SwiperSlide>
-                    <CardComponent
-                      key={card.id}
-                      card={card}
-                      label="100 Follows"
-                    />
-                  </SwiperSlide>
-                ))}
+              {topAlbums.map((card) => (
+                <SwiperSlide key={card.id}>
+                  <CardComponent card={card} label="100 Follows" />
+                </SwiperSlide>
+              ))}
               <LeftArrow />
               <RightArrow />
             </Carousel>
           </Grid>
         ) : (
           <Grid container spacing={3}>
-            {topAlbums.length &&
-              topAlbums.map((card) => (
-                <CardComponent key={card.id} card={card} label="100 Follows" />
-              ))}
+            {topAlbums.map((card) => (
+              <CardComponent key={card.id} card={card} label="100 Follows" />
+            ))}
           </Grid>
         )}
       </Box>
+
+      {/* New Albums */}
       <Box className={styles.container1}>
         <Box
           sx={{
@@ -113,32 +109,29 @@ export default function Section() {
             {!isCollapsedNew ? "Show All" : "Collapse"}
           </button>
         </Box>
+
         {!isCollapsedNew ? (
           <Grid container spacing={3} className={styles.albumwrapper}>
             <Carousel>
-              {newAlbums.length &&
-                newAlbums.map((card) => (
-                  <SwiperSlide>
-                    <CardComponent
-                      key={card.id}
-                      card={card}
-                      label="100 Follows"
-                    />
-                  </SwiperSlide>
-                ))}
+              {newAlbums.map((card) => (
+                <SwiperSlide key={card.id}>
+                  <CardComponent card={card} label="100 Follows" />
+                </SwiperSlide>
+              ))}
               <LeftArrow />
               <RightArrow />
             </Carousel>
           </Grid>
         ) : (
           <Grid container spacing={3}>
-            {newAlbums.length &&
-              newAlbums.map((card) => (
-                <CardComponent key={card.id} card={card} label="100 Follows" />
-              ))}
+            {newAlbums.map((card) => (
+              <CardComponent key={card.id} card={card} label="100 Follows" />
+            ))}
           </Grid>
         )}
       </Box>
+
+      {/* Songs Section */}
       <Box className={styles.container1}>
         <Box
           sx={{
@@ -178,19 +171,16 @@ export default function Section() {
 
         <Grid container spacing={3} className={styles.albumwrapper}>
           <Carousel>
-            {filteredSongs.length &&
-              filteredSongs.map((card) => (
-                <SwiperSlide>
-                  <CardComponent key={card.id} card={card} label="100 Likes" />
-                </SwiperSlide>
-              ))}
+            {filteredSongs.map((card) => (
+              <SwiperSlide key={card.id}>
+                <CardComponent card={card} label="100 Likes" />
+              </SwiperSlide>
+            ))}
             <LeftArrow />
             <RightArrow />
           </Carousel>
         </Grid>
       </Box>
-
-    
     </>
   );
 }
