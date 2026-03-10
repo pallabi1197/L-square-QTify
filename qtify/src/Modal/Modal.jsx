@@ -13,16 +13,30 @@ import Box from "@mui/material/Box";
 
 export default function CustomizedDialogs() {
   const [open, setOpen] = React.useState(false);
+  const [form, setForm] = React.useState({
+    fullname: "",
+    email: "",
+    subject: "",
+    description: "",
+  });
+
+  
 
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+    setForm("");
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <React.Fragment >
+    <React.Fragment>
       <Button onClick={handleClickOpen} className={styles.button}>
         Give Feedback
       </Button>
@@ -32,7 +46,7 @@ export default function CustomizedDialogs() {
         open={open}
       >
         <DialogTitle
-          sx={{textAlign: "center", fontWeight: "600" }}
+          sx={{ textAlign: "center", fontWeight: "600" }}
           id="customized-dialog-title"
         >
           Feedback
@@ -60,39 +74,59 @@ export default function CustomizedDialogs() {
             <TextField
               label="Full name"
               variant="outlined"
-              color="success"
-              fullWidth
+              className={styles.field}
+              name="fullname"
+              value={form.fullname}
+              onChange={handleChange}
             />
 
             <TextField
               label="Email ID"
               variant="outlined"
-              color="success"
-              fullWidth
+              className={styles.field}
+              name="email"
+              value={form.email}
+              onChange={handleChange}
             />
 
             <TextField
               label="Subject"
               variant="outlined"
-              color="success"
-              fullWidth
+              className={styles.field}
+              name="subject"
+              value={form.subject}
+              onChange={handleChange}
             />
 
             <TextField
               label="Description"
               variant="outlined"
-              color="success"
-              fullWidth
+              className={styles.field}
+              name="description"
+              value={form.description}
+              onChange={handleChange}
               multiline
               rows={4}
             />
           </Box>
         </DialogContent>
 
-        <DialogActions sx={{ display: "flex", justifyContent: "center", marginBottom:'1rem' }}>
+        <DialogActions
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "1rem",
+          }}
+        >
           <Button
             autoFocus
             onClick={handleClose}
+            disabled={
+              !form.fullname ||
+              !form.email ||
+              !form.subject ||
+              !form.description
+            }
             sx={{
               width: "30%",
               bgcolor: "#34c94b;",
@@ -100,7 +134,7 @@ export default function CustomizedDialogs() {
               borderRadius: "10px",
             }}
           >
-            Save Feedback
+            Submit Feedback
           </Button>
         </DialogActions>
       </Dialog>

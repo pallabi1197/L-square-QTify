@@ -14,4 +14,5 @@ body {
   display: none;
 }
 
-.css-10d30g3-MuiPaper-root-MuiDialog-paper{width: 50%!important;}
+.css-10d30g3-MuiPaper-root-MuiDialog-paper{width: 35%!important;
+border-radius: 10px;}

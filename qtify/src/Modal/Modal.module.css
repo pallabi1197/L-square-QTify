@@ -15,3 +15,10 @@
   cursor: pointer;
 }
 
+.field :global(.MuiOutlinedInput-root fieldset) {
+  border-color: #34c94b;
+}
+
+.field :global(.MuiInputLabel-root) {
+  color: #000;
+}

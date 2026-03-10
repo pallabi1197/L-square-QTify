@@ -21,38 +21,22 @@ export default function Section() {
   const [selectedGenre, setSelectedGenre] = useState("all");
 
   const getCardData = async () => {
-    try {
-      const response1 = await axios.get(
-        "https://qtify-backend.labs.crio.do/albums/top",
-      );
+  try {
+    const [topRes, newRes, songRes] = await Promise.all([
+      axios.get("https://qtify-backend.labs.crio.do/albums/top"),
+      axios.get("https://qtify-backend.labs.crio.do/albums/new"),
+      axios.get("https://qtify-backend.labs.crio.do/songs"),
+    ]);
 
-      const response2 = await axios.get(
-        "https://qtify-backend.labs.crio.do/albums/new",
-      );
+    setTopAlbums(topRes.data);
+    setNewAlbums(newRes.data);
+    setShowSongs(songRes.data);
 
-      const response3 = await axios.get(
-        "https://qtify-backend.labs.crio.do/songs",
-      );
+  } catch (error) {
+    console.log("error fetching card data", error);
+  }
+};
 
-      const response4 = await axios.get(
-        "https://qtify-backend.labs.crio.do/genres",
-      );
-
-      if (
-        response1.status &&
-        response2.status &&
-        response3.status &&
-        response4.status === 200
-      ) {
-        setTopAlbums(response1.data);
-        setNewAlbums(response2.data);
-        setShowSongs(response3.data);
-        setShowGenres(response4.data.data);
-      }
-    } catch (error) {
-      console.log("error fetching card data", error);
-    }
-  };
 
   console.log("song genre:", showSongs[0]?.genre?.key);
 
